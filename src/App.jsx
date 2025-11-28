@@ -9,8 +9,6 @@ import Settings from "./pages/Settings"
 
 
 import Reports from "./pages/Reports";
-// ...
-<Route path="/reports" element={<Reports />} />
 
 function App() {
   return (
@@ -22,7 +20,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/reports" element={<Reports />} />
-          
+
           <Route path="/ai" element={<MyAI />} />
           <Route path="/settings" element={<Settings />} />
         </Route>

@@ -8,9 +8,7 @@ import waves from "../assets/waves.png"
 const Recommendations = () => {
 
 
-  const totalBars = 30;
-  const percentage = 86;
-  const filledBars = Math.round((percentage / 100) * totalBars);
+
 
   return (
     <div className="p-3 space-y-8 bg-[#FCF7F2] min-h-screen">

@@ -3,12 +3,12 @@ import { useState } from "react";
 import Header from "../components/Header";
 
 export default function Settings() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [theme, setTheme] = useState("");
-  const [stressAlert, setStressAlert] = useState(true);
-  const [dataPrivacy, setDataPrivacy] = useState(false);
+  const [_name, _setName] = useState("");
+  const [_email, _setEmail] = useState("");
+  const [_dob, _setDob] = useState("");
+  const [_theme, _setTheme] = useState("");
+  const [_stressAlert, _setStressAlert] = useState(true);
+  const [_dataPrivacy, _setDataPrivacy] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#faf9f7] px-4 py-6">
