@@ -12,7 +12,7 @@ const Login = () => {
         {/* LOGO */}
         <div className="flex justify-center mb-6">
           <div className=" flex items-center justify-center">
-            <img 
+            <img
               src={logo}
               alt="logo"
               className="h-30 w-30 object-contain"
@@ -87,12 +87,12 @@ const Login = () => {
 
           {/* Login Button */}
           <Link to="/dashboard">
-          <button
-            type="submit"
-            className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-900 transition mt-4"
-          >
-            Sign in
-          </button>
+            <button
+              type="submit"
+              className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-900 transition mt-4"
+            >
+              Sign in
+            </button>
           </Link>
         </form>
 

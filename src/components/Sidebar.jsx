@@ -15,7 +15,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="h-screen w-64 bg-[#F6E8D8] border-r border-gray-200 p-6 flex flex-col justify-between rounded-tr-3xl rounded-br-3xl shadow-md">
+    <div className="h-[130vh] w-64 bg-[#F6E8D8] border-r border-gray-200 p-6 flex flex-col justify-between rounded-tr-3xl rounded-br-3xl shadow-md">
 
       {/* LOGO SECTION */}
       <div>
@@ -33,10 +33,9 @@ const Sidebar = () => {
                 to={item.path}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-2 rounded-xl font-medium transition-all duration-200
-                  ${
-                    isActive
-                      ? "bg-[#8B0A0A] text-white shadow-sm"
-                      : "text-[#6A3A2B] hover:bg-[#E8CDB9]"
+                  ${isActive
+                    ? "bg-[#8B0A0A] text-white shadow-sm"
+                    : "text-[#6A3A2B] hover:bg-[#E8CDB9]"
                   }`
                 }
               >

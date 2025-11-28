@@ -4,11 +4,13 @@ import Signup from "./pages/Signup";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Recommendations from "./pages/Recommendations"
-import Reports from "./pages/Reports"
 import MyAI from "./pages/MyAI"
 import Settings from "./pages/Settings"
 
 
+import Reports from "./pages/Reports";
+// ...
+<Route path="/reports" element={<Reports />} />
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/reports" element={<Reports />} />
+          
           <Route path="/ai" element={<MyAI />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
@@ -30,3 +33,4 @@ function App() {
 }
 
 export default App;
+

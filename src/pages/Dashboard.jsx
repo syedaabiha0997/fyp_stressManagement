@@ -66,9 +66,9 @@ export default function Dashboard() {
       <Header />
 
       {/* Main content grid */}
-      <div className="flex gap-3 mb-3 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
         {/* Heart Rate Card */}
-        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100 w-[20em]">
+        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center">
               <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
@@ -105,7 +105,7 @@ export default function Dashboard() {
         </div>
 
         {/* Blood Pressure Card */}
-        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100 w-[20em]">
+        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center">
               <svg className="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
@@ -142,7 +142,7 @@ export default function Dashboard() {
         </div>
 
         {/* This Week Stats */}
-        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100 sm:col-span-2 lg:col-span-1 w-[35em]">
+        <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100">
           <h3 className="text-gray-900 font-semibold text-sm mb-3">This Week</h3>
           <div className="space-y-3">
             <div>
@@ -237,9 +237,9 @@ export default function Dashboard() {
                   iconType="circle"
                   iconSize={8}
                 />
-                <Bar dataKey="Aerobics" fill="#dc2626" radius={[8, 8, 0, 0]} maxBarSize={30} />
-                <Bar dataKey="Yoga" fill="#be123c" radius={[8, 8, 0, 0]} maxBarSize={30} />
-                <Bar dataKey="Meditation" fill="#ea580c" radius={[8, 8, 0, 0]} maxBarSize={30} />
+                <Bar dataKey="Aerobics" fill="#ecb5b5ff" radius={[8, 8, 0, 0]} maxBarSize={30} />
+                <Bar dataKey="Yoga" fill="#f17493ff" radius={[8, 8, 0, 0]} maxBarSize={30} />
+                <Bar dataKey="Meditation" fill="#704b38ff" radius={[8, 8, 0, 0]} maxBarSize={30} />
               </BarChart>
             </ResponsiveContainer>
           </div>

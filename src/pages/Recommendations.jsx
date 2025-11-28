@@ -1,16 +1,16 @@
 import { Search, User } from "lucide-react";
 import React from "react";
-import { FaLungs, FaBrain, FaWalking } from "react-icons/fa";
+import { FaLungs, FaBrain, FaWalking, FaTint } from "react-icons/fa";
 import { RiHeartPulseFill } from "react-icons/ri";
 import Header from "../components/Header";
 import waves from "../assets/waves.png"
 
 const Recommendations = () => {
 
-  
-const totalBars = 30;
-const percentage = 86;
-const filledBars = Math.round((percentage / 100) * totalBars);
+
+  const totalBars = 30;
+  const percentage = 86;
+  const filledBars = Math.round((percentage / 100) * totalBars);
 
   return (
     <div className="p-3 space-y-8 bg-[#FCF7F2] min-h-screen">
@@ -56,7 +56,7 @@ const filledBars = Math.round((percentage / 100) * totalBars);
             </div>
           </div>
 
-         <button className="mt-5 bg-[#F8DEBD] text-black text-sm px-4 py-2 rounded-full">
+          <button className="mt-5 bg-[#F8DEBD] text-black text-sm px-4 py-2 rounded-full">
             Learn More
           </button>
 
@@ -77,7 +77,7 @@ const filledBars = Math.round((percentage / 100) * totalBars);
             </div>
           </div>
 
-       <button className="mt-5 bg-[#F8DEBD] text-black text-sm px-4 py-2 rounded-full">
+          <button className="mt-5 bg-[#F8DEBD] text-black text-sm px-4 py-2 rounded-full">
             Mark as Done
           </button>
 
@@ -117,85 +117,96 @@ const filledBars = Math.round((percentage / 100) * totalBars);
             </div>
           </div>
 
+          {/* Card C */}
+          <div className="bg-white rounded-2xl shadow border border-gray-100 p-[2em] flex items-center gap-5">
+            <FaTint className="text-black text-5xl" />
+            <div>
+              <h3 className="font-semibold text-lg">Water Intake Reminder</h3>
+              <p className="text-gray-600 text-sm">
+                Stay hydrated by drinking at least 8 glasses of water daily
+              </p>
+            </div>
+          </div>
+
         </div>
 
         {/* Right Sidebar */}
         <div className="space-y-6">
 
           {/* REPORTS */}
-         <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100">
-          <h3 className="text-gray-900 font-semibold text-sm mb-3">Reports</h3>
-          <div className="space-y-4">
-            {/* Stress Release */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 relative">
-                <svg className="w-12 h-12 transform -rotate-90">
-                  <circle
-                    cx="24"
-                    cy="24"
-                    r="20"
-                    stroke="#fee2e2"
-                    strokeWidth="6"
-                    fill="none"
-                  />
-                  <circle
-                    cx="24"
-                    cy="24"
-                    r="20"
-                    stroke="#ef4444"
-                    strokeWidth="6"
-                    fill="none"
-                    strokeDasharray={`${2 * Math.PI * 20 * 0.8} ${2 * Math.PI * 20}`}
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-gray-900">80%</span>
+          <div className="bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-100">
+            <h3 className="text-gray-900 font-semibold text-sm mb-3">Reports</h3>
+            <div className="space-y-4">
+              {/* Stress Release */}
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 relative">
+                  <svg className="w-12 h-12 transform -rotate-90">
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#fee2e2"
+                      strokeWidth="6"
+                      fill="none"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#ef4444"
+                      strokeWidth="6"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 20 * 0.8} ${2 * Math.PI * 20}`}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-gray-900">80%</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-xs font-semibold text-gray-900">Stress Release</p>
+                  <p className="text-[10px] text-red-500">80% decrease</p>
                 </div>
               </div>
-              <div className="flex-1 pt-1">
-                <p className="text-xs font-semibold text-gray-900">Stress Release</p>
-                <p className="text-[10px] text-red-500">80% decrease</p>
-              </div>
-            </div>
 
-            {/* General Health */}
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 relative">
-                <svg className="w-12 h-12 transform -rotate-90">
-                  <circle
-                    cx="24"
-                    cy="24"
-                    r="20"
-                    stroke="#fecaca"
-                    strokeWidth="6"
-                    fill="none"
-                  />
-                  <circle
-                    cx="24"
-                    cy="24"
-                    r="20"
-                    stroke="#be123c"
-                    strokeWidth="6"
-                    fill="none"
-                    strokeDasharray={`${2 * Math.PI * 20 * 0.75} ${2 * Math.PI * 20}`}
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-gray-900">75%</span>
+              {/* General Health */}
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 relative">
+                  <svg className="w-12 h-12 transform -rotate-90">
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#fecaca"
+                      strokeWidth="6"
+                      fill="none"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#be123c"
+                      strokeWidth="6"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 20 * 0.75} ${2 * Math.PI * 20}`}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-gray-900">75%</span>
+                  </div>
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-xs font-semibold text-gray-900">General Health</p>
+                  <p className="text-[10px] text-green-500">75% increase</p>
                 </div>
               </div>
-              <div className="flex-1 pt-1">
-                <p className="text-xs font-semibold text-gray-900">General Health</p>
-                <p className="text-[10px] text-green-500">75% increase</p>
-              </div>
-            </div>
 
-            {/* Overall Score */}
-       
+              {/* Overall Score */}
+
+            </div>
           </div>
-        </div>
 
         </div>
 

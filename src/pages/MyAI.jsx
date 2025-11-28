@@ -14,7 +14,7 @@ export default function MyAI() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#fff5f0] via-[#fffbf7] to-[#fff0e6] p-6 flex flex-col">
-      
+
       {/* BACK BUTTON */}
       <button className="h-12 w-12 bg-white shadow-md rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors mb-8">
         <ArrowLeft className="text-gray-800" size={20} />
@@ -22,7 +22,7 @@ export default function MyAI() {
 
       {/* CENTER CONTENT */}
       <div className="flex-grow flex flex-col items-center justify-center -mt-16">
-        
+
         {/* Sparkle Icon */}
         <div className="flex justify-center mb-6">
           <div className="relative">
@@ -42,7 +42,7 @@ export default function MyAI() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-800 text-sm">
             {suggestions.map((suggestion, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-left hover:bg-white/80 transition-colors cursor-pointer border border-gray-100"
               >
