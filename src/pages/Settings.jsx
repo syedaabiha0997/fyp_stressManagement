@@ -31,7 +31,7 @@ const Settings = () => {
       setLoading(true);
       // 2. Firebase update call
       await updateProfile(user, { displayName: name });
-      
+
       setSuccess("Profile synchronized successfully");
       setIsEditing(false);
 
@@ -62,7 +62,7 @@ const Settings = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 font-sans">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header */}
         <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-8">
           <div>
@@ -70,14 +70,14 @@ const Settings = () => {
             <h1 className="text-3xl font-black text-[#111827] tracking-tight mt-2">Account Control</h1>
           </div>
           <div className="flex gap-2">
-             <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-emerald-500">
-                <ShieldCheck size={20} />
-             </div>
+            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-emerald-500">
+              <ShieldCheck size={20} />
+            </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
+
           {/* Left Side: Identity Card (Display Name yahan dikhega) */}
           <div className="lg:col-span-4">
             <div className="bg-[#111827] rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden sticky top-8">
@@ -109,9 +109,8 @@ const Settings = () => {
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] ml-1">Profile Name</label>
                   <input
-                    className={`w-full px-4 py-4 rounded-2xl border-2 transition-all outline-none font-bold text-sm ${
-                      isEditing ? "border-emerald-500 bg-white shadow-inner" : "border-slate-50 bg-slate-50 text-slate-500"
-                    }`}
+                    className={`w-full px-4 py-4 rounded-2xl border-2 transition-all outline-none font-bold text-sm ${isEditing ? "border-emerald-500 bg-white shadow-inner" : "border-slate-50 bg-slate-50 text-slate-500"
+                      }`}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     disabled={!isEditing}
@@ -128,7 +127,7 @@ const Settings = () => {
               <div className="flex gap-4 mt-12">
                 {!isEditing ? (
                   <button onClick={() => setIsEditing(true)} className="flex-1 bg-[#111827] text-white font-black text-xs uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-slate-800 transition-all">
-                    Modify Records
+                    Update Records
                   </button>
                 ) : (
                   <>
