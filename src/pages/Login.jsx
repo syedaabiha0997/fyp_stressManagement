@@ -1,109 +1,163 @@
-import React from "react";
-import logo from "../assets/logo.png"
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
+import { signInWithEmail, signInWithGoogle } from "../services/authService";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, ShieldCheck } from "lucide-react";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!email || !password) {
+      setError("Identification required: Please enter email and password");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await signInWithEmail(email, password, rememberMe);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Access Denied: Invalid credentials provided");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoading(true);
+      await signInWithGoogle(rememberMe);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("External Authentication Failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 via-white to-orange-200 p-4">
-
-      {/* CARD */}
-      <div className="w-full max-w-xl bg-orange-50 rounded-3xl shadow-[0px_8px_40px_rgba(0,0,0,0.1)] p-10 border border-gray-100">
-
-        {/* LOGO */}
-        <div className="flex justify-center mb-6">
-          <div className=" flex items-center justify-center">
-            <img
-              src={logo}
-              alt="logo"
-              className="h-30 w-30 object-contain"
-            />
+    <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] p-4 font-sans">
+      <div className="w-full max-w-lg bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 p-10 border border-slate-100 relative overflow-hidden">
+        
+        {/* Top Branding */}
+        <div className="flex flex-col items-center mb-10">
+          <div className="bg-[#111827] p-4 rounded-[2rem] mb-6 shadow-xl">
+             <img src={logo} alt="logo" className="h-16 w-auto" />
           </div>
+          <span className="text-emerald-600 text-[10px] font-black uppercase tracking-[0.3em] bg-emerald-50 px-4 py-1 rounded-full mb-3">
+            Secure Gateway
+          </span>
+          <h2 className="text-3xl font-black text-[#111827] tracking-tight">
+            System Access
+          </h2>
         </div>
 
-        {/* Title */}
-        <h2 className="text-center text-2xl font-semibold text-gray-800">
-          Welcome back
-        </h2>
+        {error && (
+          <div className="bg-rose-50 border border-rose-100 text-rose-600 p-4 rounded-2xl mb-6 text-xs font-bold flex items-center gap-3 animate-in fade-in slide-in-from-top-1">
+            <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
+            {error}
+          </div>
+        )}
 
-        <p className="text-center text-gray-500 mb-6">
-          Please enter your detail to sign in.
-        </p>
-
-        {/* Google Login Button */}
-        <button className="w-full border border-gray-300 rounded-xl py-2 flex items-center justify-center gap-2 hover:bg-gray-50 transition mb-4">
+        {/* Google Login */}
+        <button
+          onClick={handleGoogleLogin}
+          disabled={loading}
+          className="w-full bg-white border-2 border-slate-100 rounded-2xl py-4 flex items-center justify-center gap-3 hover:bg-slate-50 transition-all mb-6 text-sm font-bold text-slate-600 shadow-sm"
+        >
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
-            alt="google"
             className="h-5 w-5"
+            alt="Google"
           />
-          <span className="text-gray-700">or sign in with Google</span>
+          <span>Continue with Google</span>
         </button>
 
-        {/* Divider */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="flex-1 h-px bg-gray-300"></div>
-          <p className="text-gray-500 text-sm">OR</p>
-          <div className="flex-1 h-px bg-gray-300"></div>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="flex-1 h-px bg-slate-100"></div>
+          <p className="text-slate-300 text-[10px] font-black uppercase tracking-widest">OR</p>
+          <div className="flex-1 h-px bg-slate-100"></div>
         </div>
 
         {/* FORM */}
-        <form className="space-y-4">
-
-          {/* Email */}
-          <div>
-            <label className="block mb-1 font-medium text-gray-700">
-              E-mail Address
-            </label>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="relative group">
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-500 transition-colors" size={18} />
             <input
               type="email"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-black"
-              placeholder="Enter your email..."
+              placeholder="System Email"
+              className="w-full bg-slate-50 border-2 border-transparent focus:border-emerald-500 focus:bg-white px-12 py-4 rounded-2xl text-sm font-bold text-[#111827] placeholder-slate-400 outline-none transition-all"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          {/* Password */}
-          <div>
-            <label className="block mb-1 font-medium text-gray-700">
-              Password
-            </label>
+          <div className="relative group">
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-500 transition-colors" size={18} />
             <input
-              type="password"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-black"
-              placeholder="Password@123"
+              type={showPassword ? "text" : "password"}
+              placeholder="Passkey"
+              className="w-full bg-slate-50 border-2 border-transparent focus:border-emerald-500 focus:bg-white px-12 py-4 rounded-2xl text-sm font-bold text-[#111827] placeholder-slate-400 outline-none transition-all"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-emerald-500"
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
           </div>
 
-          {/* Remember + Forgot Password */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2">
-              <input type="checkbox" className="h-4 w-4" />
-              <span className="text-gray-700">Remember me</span>
+          <div className="flex justify-between items-center px-1">
+            <label className="flex items-center gap-2 cursor-pointer group">
+              <input
+                type="checkbox"
+                className="w-4 h-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-slate-600 transition-colors">Remember Station</span>
             </label>
 
-            <a href="#" className="text-gray-600 hover:text-black underline">
-              Forgot password?
-            </a>
+            <Link to="/forgot-password" size={18} className="text-[10px] font-black text-emerald-600 uppercase tracking-widest hover:underline">
+              Reset Key?
+            </Link>
           </div>
 
-          {/* Login Button */}
-          <Link to="/dashboard">
-            <button
-              type="submit"
-              className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-900 transition mt-4"
-            >
-              Sign in
-            </button>
-          </Link>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-[#111827] hover:bg-slate-800 text-white font-black text-xs uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-3 active:scale-95 mt-6"
+          >
+            {loading ? "Authorizing..." : "Enter Terminal"}
+            {!loading && <ArrowRight size={16} className="text-emerald-400" />}
+          </button>
         </form>
 
-        {/* Bottom Sign Up */}
-        <p className="text-center mt-6 text-gray-600">
-          Don’t have an account yet?{" "}
-          <Link to="/signup" className="text-black font-semibold hover:underline">
-            Sign up
-          </Link>
-        </p>
-
+        <div className="mt-10 pt-8 border-t border-slate-50 text-center">
+          <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">
+            New Operator?{" "}
+            <Link to="/signup" className="text-emerald-600 hover:text-emerald-700 ml-2">
+              Request Access
+            </Link>
+          </p>
+        </div>
+        
+        {/* Decorative background flare */}
+        <div className="absolute -top-12 -right-12 w-24 h-24 bg-emerald-50 rounded-full opacity-50"></div>
       </div>
     </div>
   );

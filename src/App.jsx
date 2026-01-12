@@ -9,6 +9,9 @@ import Settings from "./pages/Settings"
 
 
 import Reports from "./pages/Reports";
+import ForgotPassword from "./pages/ForgotPassword";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Data from "./pages/data";
 
 function App() {
   return (
@@ -16,15 +19,25 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/reports" element={<Reports />} />
-
           <Route path="/ai" element={<MyAI />} />
           <Route path="/settings" element={<Settings />} />
-        </Route>
+          <Route path="/data" element={<Data />} />
 
+
+
+        </Route>
       </Routes>
     </>
   );
