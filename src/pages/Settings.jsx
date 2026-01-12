@@ -127,7 +127,7 @@ const Settings = () => {
               <div className="flex gap-4 mt-12">
                 {!isEditing ? (
                   <button onClick={() => setIsEditing(true)} className="flex-1 bg-[#111827] text-white font-black text-xs uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-slate-800 transition-all">
-                    Update Records
+                    Modify Records
                   </button>
                 ) : (
                   <>
