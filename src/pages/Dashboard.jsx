@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Add kiya gaya
 import { Search, User, Heart, Activity, ShieldCheck, Zap } from "lucide-react";
 import {
   BarChart,
@@ -44,6 +45,7 @@ const bloodPressureData = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate(); // Hook initialize kiya gaya
   const [selectedMonth, setSelectedMonth] = useState("Oct 2025");
   const [health, setHealth] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -207,7 +209,7 @@ export default function Dashboard() {
 
           {/* Right Panel: Summary & Reports */}
           <div className="space-y-6">
-            {/* Charcoal Summary Card - Name Removed */}
+            {/* Charcoal Summary Card */}
             <div className="bg-[#111827] rounded-[2.5rem] p-8 shadow-xl text-white flex flex-col justify-between min-h-[320px] relative overflow-hidden">
                 <Zap className="absolute -right-4 -top-4 w-32 h-32 text-gray-800 opacity-30" />
                 <div className="relative z-10">
@@ -220,7 +222,11 @@ export default function Dashboard() {
                   <p className="text-gray-400 text-xs font-medium mt-2">Achievement reached</p>
                 </div>
 
-                <button className="relative z-10 w-full py-4 bg-[#10B981] hover:bg-emerald-600 rounded-2xl font-bold text-sm transition-all active:scale-95 shadow-lg shadow-emerald-900/40">
+                {/* Yahan Navigate logic lagaya hai */}
+                <button 
+                  onClick={() => navigate("/reports")} 
+                  className="relative z-10 w-full py-4 bg-[#10B981] hover:bg-emerald-600 rounded-2xl font-bold text-sm transition-all active:scale-95 shadow-lg shadow-emerald-900/40"
+                >
                   Full Report
                 </button>
             </div>

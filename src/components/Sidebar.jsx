@@ -8,7 +8,8 @@ import {
   LogOut,
   Activity,
   Lightbulb,
-  Database
+  Database,
+  BrainCircuit // Maine icon bhi thora stress/mind related upgrade kiya hai
 } from "lucide-react";
 import { auth } from "../firebase"; 
 import { signOut } from "firebase/auth";
@@ -40,7 +41,7 @@ const Sidebar = () => {
     { 
       name: "Recommendations", 
       path: "/recommendations", 
-      icon: <Lightbulb size={24} strokeWidth={2.5} /> // Thora bara aur bold icon
+      icon: <Lightbulb size={24} strokeWidth={2.5} /> 
     },
     { 
       name: "AI Health", 
@@ -61,16 +62,20 @@ const Sidebar = () => {
 
   return (
     <div className="h-screen w-64 bg-[#111827] text-slate-400 flex flex-col border-r border-slate-800 sticky top-0">
-      {/* Brand Logo */}
+      
+      {/* --- BRAND LOGO UPDATED --- */}
       <div className="p-8 flex items-center gap-3">
         <div className="bg-emerald-500 p-2 rounded-xl text-white shadow-lg shadow-emerald-500/20">
-          <Activity size={24} />
+          <BrainCircuit size={24} />
         </div>
-        <span className="text-white font-black tracking-tighter text-xl uppercase italic">Vitals AI</span>
+        <div className="flex flex-col">
+           <span className="text-white font-black tracking-tighter text-sm uppercase leading-none"> AI Stress</span>
+           <span className="text-emerald-500 font-black tracking-tighter text-lg uppercase italic leading-none">Detector</span>
+        </div>
       </div>
 
       {/* Links Navigation */}
-      <nav className="flex-1 px-4 space-y-2 mt-4">
+      <nav className="flex-1 px-4 space-y-2 mt-2">
         {menuItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
