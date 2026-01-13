@@ -1,6 +1,6 @@
 import requests
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 # def get_ai_response(user_message):
 #     response = requests.post(
